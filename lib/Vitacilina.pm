@@ -144,7 +144,7 @@ sub new {
 
 	return bless {
 		ua				=> $ua,
-		format			=> $opts{format} || $FORMAT,
+		'format'			=> $opts{format} || $FORMAT,
 		output			=> $opts{output} || $OUTPUT,
 		config			=> $opts{config} || '',
 		limit			=> $opts{limit} || $LIMIT,
@@ -274,7 +274,7 @@ sub _feedsData {
 		my $res = $self->{ua}->get($k);
 		
 		unless($res->is_success) {
-			print STDERR qq{ERROR: $k: $res->status_line\n};
+			print STDERR qq{ERROR: $k: }.$res->status_line."\n";
 			next;
 		}
 		
